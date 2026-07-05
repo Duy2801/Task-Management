@@ -2,8 +2,8 @@ import 'dotenv/config';
 import { PrismaPg } from '@prisma/adapter-pg';
 import { PrismaClient } from '../src/generated/prisma/client';
 
-const connectionString = process.env.DATABASE_URL;
-if (!connectionString) throw new Error('DATABASE_URL chưa được cấu hình');
+const connectionString = process.env.DIRECT_URL ?? process.env.DATABASE_URL;
+if (!connectionString) throw new Error('DIRECT_URL or DATABASE_URL is not configured');
 
 const prisma = new PrismaClient({
   adapter: new PrismaPg({ connectionString }),

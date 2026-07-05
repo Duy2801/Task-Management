@@ -10,6 +10,8 @@ export default defineConfig({
     seed: "tsx prisma/seed.ts",
   },
   datasource: {
-    url: process.env["DATABASE_URL"],
+    // Schema operations and Studio need a session/direct connection.
+    // The application continues to use DATABASE_URL through PrismaService.
+    url: process.env["DIRECT_URL"] ?? process.env["DATABASE_URL"],
   },
 });
