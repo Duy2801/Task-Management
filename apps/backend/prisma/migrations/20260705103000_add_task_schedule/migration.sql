@@ -1,0 +1,7 @@
+ALTER TABLE "Task"
+ADD COLUMN "assignee" VARCHAR(120),
+ADD COLUMN "startAt" TIMESTAMP(3),
+ADD COLUMN "dueAt" TIMESTAMP(3),
+ADD COLUMN "completedAt" TIMESTAMP(3);
+
+CREATE INDEX "Task_dueAt_idx" ON "Task"("dueAt");

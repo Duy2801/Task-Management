@@ -1,0 +1,5 @@
+import { ClipboardList, RefreshCw } from "lucide-react";
+
+export function TaskSkeleton() { return <div className="task-stack" aria-label="Đang tải">{Array.from({ length: 5 }).map((_, i) => <div className="skeleton-card" key={i}><span /><div><i /><i /></div></div>)}</div>; }
+export function EmptyState({ searching, onCreate }: { searching: boolean; onCreate: () => void }) { return <div className="empty-state"><div className="empty-icon"><ClipboardList /></div><h2>{searching ? "Không tìm thấy công việc" : "Danh sách đang trống"}</h2><p>{searching ? "Thử thay đổi từ khóa hoặc bộ lọc nhé." : "Bắt đầu nhẹ nhàng bằng công việc đầu tiên của bạn."}</p>{!searching && <button className="button primary" onClick={onCreate}>Tạo công việc đầu tiên</button>}</div>; }
+export function ErrorState({ retry }: { retry: () => void }) { return <div className="empty-state error-state"><h2>Unable to connect to the server</h2><p>Make sure the backend is running, then try again.</p><button className="button secondary" onClick={retry}><RefreshCw size={16} /> Try again</button></div>; }
